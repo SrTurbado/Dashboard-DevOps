@@ -170,21 +170,109 @@
   right: 0;
 }
 
+/* Modal de Acción Crítica Centrado y Balanceado */
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.95);
   width: 90%;
-  max-width: 480px;
+  max-width: 440px;
   background-color: var(--bg-surface);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1.75rem 1.75rem;
   box-shadow: var(--shadow-lg);
   z-index: 300;
   opacity: 0;
   visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Posicionamiento absoluto del botón X */
+.modal-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+/* Insignia central del icono de advertencia */
+.modal-icon-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(217, 119, 6, 0.15); /* Tono dorado/advertencia suave */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header {
+  margin-bottom: 0.75rem;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Cuerpo del modal con espacio de respiración (gap) */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.modal-message {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Etiqueta monospaciada para resaltar el ID del servidor */
+.server-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.modal-warning {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Botones inferiores simétricos de igual tamaño */
+.modal-footer {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.modal-footer .btn {
+  flex: 1;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 0.95rem;
 }
 
 .modal.active {

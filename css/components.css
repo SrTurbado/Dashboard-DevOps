@@ -1,0 +1,374 @@
+/* Tarjetas Bento Grid */
+.bento-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: var(--primary-color);
+}
+
+/* ZONA DE TOQUE 3D (Mínimo 44x44px) */
+/* Botón de Icono (Sol/Luna y Menú Hamburger) */
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem; /* Aumentado de 1.25rem a 1.5rem para mayor visibilidad */
+  cursor: pointer;
+  border-radius: 8px;
+  min-height: 48px; /* Área de toque cómoda */
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed) ease, transform 150ms ease;
+}
+
+.btn-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05); /* Suave microinteracción al pasar el cursor */
+}
+
+.btn-icon, .btn {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BOTONES Y GESTIÓN DE LOS 5 ESTADOS */
+.btn {
+  padding: 0 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color var(--transition-speed) ease, outline var(--transition-speed) ease;
+}
+
+/* 1. Default */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* 2. Hover */
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-danger:hover { background-color: var(--danger-hover); }
+
+/* 3. Focus (Accesibilidad con contorno visible) */
+.btn:focus-visible, .form-control:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+/* 4. Disabled */
+.btn:disabled, .form-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 5. Loading State */
+.btn.loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Form Control Inputs */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-control {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+/* Componentes Flotantes (Drawer y Modal) */
+.drawer-overlay, .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed) ease;
+  z-index: 200;
+}
+
+.drawer-overlay.active, .modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-lg);
+  z-index: 300;
+  transition: right var(--transition-speed) ease;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer.active {
+  right: 0;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 480px;
+  background-color: var(--bg-surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 300;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+.badge-success { background: #dcfce7; color: #15803d; }
+.badge-warning { background: #fef3c7; color: #b45309; }
+
+/* Tabla Responsiva */
+.data-table-container {
+  overflow-x: auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+/* Limpieza de fondo para todos los botones con icono (Luna y X) */
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: 6px;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.btn-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estructura para separar el título del botón X en modales y paneles */
+.modal-header, .drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Estructura del cuerpo del Drawer */
+.drawer-body {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.form-label.mb-0 {
+  margin-bottom: 0;
+}
+
+.form-help {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* Mejora general de inputs y selects */
+.form-control {
+  width: 100%;
+  min-height: 44px; /* Cumple 3D IxD para toque */
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  color-scheme: dark light; /* Adapta calendarios nativos al tema activo */
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  outline: none;
+}
+
+/* TARJETA DEL TOGGLE SWITCH (Contenedor alineado) */
+.form-switch-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin: 0.75rem 0 1.25rem 0;
+}
+
+/* Switch Component (48x26px con área táctil superior a 44px) */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Ocultar input nativo */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Base del Switch */
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background-color: var(--border-color);
+  border-radius: 34px;
+  transition: background-color var(--transition-speed) ease;
+}
+
+/* Perilla circular interior */
+.toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-speed) ease;
+}
+
+/* Estado Activo (Checked) */
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--primary-color);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+}
+
+/* Estado Focus Accesible (Teclado) */
+.toggle-switch input:focus-visible + .toggle-slider {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Botón de envío de ancho completo */
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}

@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Header Fijo */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px; /* Aumentado de 60px a 75px */
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.75rem;
+  z-index: 100;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.logo {
+  font-size: 1.35rem; /* Aumentado a 1.35rem */
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.breadcrumbs li+li::before {
+  content: "/";
+  margin-right: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.breadcrumbs a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumbs li[aria-current="page"] {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Layout General Mobile-First */
+.app-body {
+  margin-top: 75px; /* Igual al nuevo alto del header */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar en Móvil */
+.app-sidebar {
+  background-color: var(--bg-sidebar);
+  color: var(--text-on-dark);
+  padding: 1rem;
+  display: none; /* Oculto en móvil por defecto, visible al conmutar */
+}
+
+.app-sidebar.show {
+  display: block;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-nav a, .sidebar-link {
+  color: var(--text-on-dark);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  display: block;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-nav li.active a, .sidebar-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-content {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+/* Bento Grid (Pantalla Pequeña: 1 Columna) */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Breakpoint Progresivo para ESCRITORIO (@media min-width: 768px) */
+@media (min-width: 768px) {
+  .app-body {
+    flex-direction: row;
+  }
+  
+.app-sidebar {
+    min-height: calc(100vh - 75px);
+  }
+  
+  .breadcrumbs {
+    display: block;
+  }
+
+  /* Bento Grid Macro Bidimensional */
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .card-medium {
+    grid-column: span 1;
+  }
+
+  .card-wide {
+    grid-column: span 3;
+  }
+}

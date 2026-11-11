@@ -105,5 +105,94 @@ document.addEventListener('DOMContentLoaded', () => {
   menuToggle?.addEventListener('click', () => {
     sidebar.classList.toggle('show');
   });
+// ==========================================
+  // CONFIGURACIÓN DE GRÁFICAS (CHART.JS)
+  // ==========================================
 
+  // Opciones comunes para modo oscuro/claro
+  Chart.defaults.color = '#64748b';
+  Chart.defaults.font.family = "system-ui, -apple-system, sans-serif";
+
+  // 1. Gráfica de CPU (Línea de Área)
+  const ctxCpu = document.getElementById('cpuChart').getContext('2d');
+  new Chart(ctxCpu, {
+    type: 'line',
+    data: {
+      labels: ['10:00', '10:05', '10:10', '10:15', '10:20', '10:25', '10:30'],
+      datasets: [{
+        label: 'Carga CPU (%)',
+        data: [35, 42, 55, 60, 48, 50, 42],
+        borderColor: '#2563eb', // primary-color
+        backgroundColor: 'rgba(37, 99, 235, 0.15)', // primary-color transparente
+        borderWidth: 3,
+        fill: true,
+        tension: 0.4, // Curva suave
+        pointBackgroundColor: '#2563eb'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, max: 100 }
+      }
+    }
+  });
+
+  // 2. Gráfica de RAM (Doughnut / Pastel hueco)
+  const ctxRam = document.getElementById('ramChart').getContext('2d');
+  new Chart(ctxRam, {
+    type: 'doughnut',
+    data: {
+      labels: ['RAM Usada', 'RAM Libre'],
+      datasets: [{
+        data: [12.4, 3.6],
+        backgroundColor: ['#d97706', '#e2e8f0'], // warning-color y border-color
+        borderWidth: 0,
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '75%', // Tamaño del hueco central
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+
+  // 3. Gráfica de Red (Barras Multi-Serie)
+  const ctxNetwork = document.getElementById('networkChart').getContext('2d');
+  new Chart(ctxNetwork, {
+    type: 'bar',
+    data: {
+      labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'],
+      datasets: [
+        {
+          label: 'Descarga (Rx)',
+          data: [350, 420, 310, 500, 620],
+          backgroundColor: '#16a34a', // success-color
+          borderRadius: 4
+        },
+        {
+          label: 'Subida (Tx)',
+          data: [200, 250, 180, 290, 310],
+          backgroundColor: '#dc2626', // danger-color
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top' }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
 });

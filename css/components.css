@@ -299,22 +299,38 @@
 
 /* Tabla Responsiva */
 .data-table-container {
-  overflow-x: auto;
+  width: 100%;
+  overflow-x: auto; /* Permite scroll horizontal si el contenido es muy ancho */
+  -webkit-overflow-scrolling: touch; /* Scroll suave en dispositivos móviles IOS */
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0; /* Quitamos el padding interno para que la tabla llegue a los bordes del contenedor */
+  margin-top: 1.5rem;
 }
 
 .data-table {
   width: 100%;
+  min-width: 600px; /* Forzamos un ancho mínimo para que las columnas no se aplasten */
   border-collapse: collapse;
 }
 
+.data-table th {
+  background-color: rgba(0, 0, 0, 0.02); /* Ligero fondo para encabezados */
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
 .data-table th, .data-table td {
-  padding: 0.75rem 1rem;
+  padding: 1rem; /* Más espacio para respirar */
   text-align: left;
   border-bottom: 1px solid var(--border-color);
+  white-space: nowrap; /* Evita que el texto como las IP o IDs se dividan en varias líneas */
+}
+.data-table td .badge {
+  display: inline-block;
+  text-align: center;
+  min-width: 70px;
 }
 /* Limpieza de fondo para todos los botones con icono (Luna y X) */
 .btn-icon {

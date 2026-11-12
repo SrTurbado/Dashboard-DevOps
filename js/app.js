@@ -99,11 +99,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   });
 
-  // 6. Responsive Sidebar Toggle
+ // 6. Responsive Sidebar Toggle (Móvil y Escritorio)
   const menuToggle = document.getElementById('menu-toggle');
   const sidebar = document.getElementById('sidebar');
+  
   menuToggle?.addEventListener('click', () => {
-    sidebar.classList.toggle('show');
+    if (window.innerWidth >= 768) {
+      // En escritorio: Alternamos la clase que lo oculta
+      sidebar.classList.toggle('hide-desktop');
+    } else {
+      // En móvil: Alternamos la clase que lo muestra
+      sidebar.classList.toggle('show');
+    }
+  });
+
+  // Limpiar clases si el usuario cambia el tamaño de la ventana de móvil a escritorio
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      sidebar.classList.remove('show');
+    } else {
+      sidebar.classList.remove('hide-desktop');
+    }
   });
 // ==========================================
   // CONFIGURACIÓN DE GRÁFICAS (CHART.JS)

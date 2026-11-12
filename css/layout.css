@@ -197,13 +197,49 @@ body {
   .content-header h1 { font-size: 2rem; }
   .app-content { padding: 1.5rem; }
   
-  .app-body { flex-direction: row; }
+ .app-body { 
+    flex-direction: row; 
+    align-items: stretch; /* Esto obliga al sidebar y al contenido a medir exactamente lo mismo de alto */
+  }
   
   /* Sidebar persistente en escritorio */
+  /* Sidebar persistente y animado en escritorio */
   .app-sidebar {
-    position: static; /* Deja de flotar */
+    position: static;
     width: 240px;
+    flex-shrink: 0; /* Evita que el texto interno se aplaste durante la animación */
+    height: auto;
     min-height: calc(100vh - 75px);
-    transition: none;
+    transition: margin-left var(--transition-speed) ease; /* Habilita el deslizamiento suave */
+    display: block; 
+  }
+
+  /* Ocultamiento con deslizamiento en lugar de corte rígido */
+  .app-sidebar.hide-desktop {
+    margin-left: -240px; /* Esconde el panel empujándolo fuera del borde izquierdo */
+  }
+  /* =========================================
+     RESTAURACIÓN DEL BENTO GRID EN ESCRITORIO
+  ========================================= */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide el espacio en 3 columnas iguales */
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  /* Las gráficas de CPU y Red ocupan 2 columnas de ancho */
+  .card-large {
+    grid-column: span 2;
+  }
+
+  /* La gráfica de RAM y las métricas pequeñas ocupan 1 columna */
+  .card-medium, .card-small {
+    grid-column: span 1;
+  }
+
+  /* Obliga a la gráfica de Red a abarcar 2 filas de alto para que Ancho y Peticiones se apilen perfectamente a su derecha */
+  .bento-grid > article:nth-child(3) {
+    grid-row: span 2;
   }
 }

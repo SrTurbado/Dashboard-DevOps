@@ -1,10 +1,12 @@
 :root {
+  /* Paleta Light (Predeterminada) */
   --bg-primary: #f8fafc;
   --bg-surface: #ffffff;
-  --bg-sidebar: #0f172a;
+  --bg-sidebar: #ffffff; /* Ahora es blanco en modo claro */
   --text-primary: #1e293b;
   --text-secondary: #64748b;
-  --text-on-dark: #f8fafc;
+  --text-sidebar: #1e293b; /* Texto oscuro para sidebar claro */
+  --sidebar-hover: rgba(0, 0, 0, 0.05); /* Hover sutil oscuro */
   
   --border-color: #e2e8f0;
   --primary-color: #2563eb;
@@ -26,9 +28,11 @@
 body.dark-theme {
   --bg-primary: #0f172a !important;
   --bg-surface: #1e293b !important;
-  --bg-sidebar: #020617 !important;
+  --bg-sidebar: #020617 !important; /* Sidebar oscuro */
   --text-primary: #f8fafc !important;
   --text-secondary: #94a3b8 !important;
+  --text-sidebar: #f8fafc !important; /* Texto claro para sidebar oscuro */
+  --sidebar-hover: rgba(255, 255, 255, 0.1) !important; /* Hover sutil claro */
   --border-color: #334155 !important;
 }
 
@@ -36,8 +40,10 @@ body.dark-theme {
 body.light-theme {
   --bg-primary: #f8fafc !important;
   --bg-surface: #ffffff !important;
-  --bg-sidebar: #0f172a !important;
+  --bg-sidebar: #ffffff !important; /* Sidebar claro */
   --text-primary: #1e293b !important;
   --text-secondary: #64748b !important;
+  --text-sidebar: #1e293b !important; /* Texto oscuro */
+  --sidebar-hover: rgba(0, 0, 0, 0.05) !important;
   --border-color: #e2e8f0 !important;
 }

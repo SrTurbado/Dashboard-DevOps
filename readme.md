@@ -4,35 +4,8 @@ Práctica integral desarrollada para la materia de **Diseño de Interfaces**, co
 
 ---
 
-## 🚀 Características Principales
 
-- **Arquitectura de Interfaz en Tres Zonas:**
-  - *Zona 1:* Header de navegación superior fijo y Sidebar deslizante responsivo (*Off-canvas* con animación fluida).
-  - *Zona 2:* Contenido dinámico principal estructurado bajo el patrón **Bento Grid** y tablas con desplazamiento horizontal nativo.
-  - *Zona 3:* Drawer lateral de configuración y Modal centralizado de confirmación para acciones críticas destructivas.
-- **Restricción Técnica Nativa:** Desarrollado íntegramente con HTML5 semántico, CSS3 nativo y JavaScript Vanilla (sin uso de frameworks CSS prefabricados como Bootstrap o Tailwind).
-- **Visualización de Datos:** Integración de gráficas interactivas mediante **Chart.js** sobre etiquetas nativas `<canvas>` (Líneas, Doughnut/Pastel y Barras).
-- **Modo Oscuro Nativo:** Conmutable de forma automática según la preferencia del sistema operativo (`prefers-color-scheme`) y controlado manualmente con un botón interactivo.
-- **Gestión Rigurosa de 5 Estados Visuales:** Aplicación explícita en botones e inputs para los estados *Default, Hover, Focus (accesible), Disabled y Loading* (con indicador de carga asíncrono).
-
----
-
-## 📂 Estructura de Archivos del Proyecto
-
-```text
-dashboard-spa/
-├── index.html          # Estructura semántica principal (HTML5)
-├── css/
-│   ├── variables.css   # Variables globales y paleta de colores dinámicamente conmutables
-│   ├── layout.css      # Maquetación macro, Mobile-First, Grid y Flexbox
-│   └── components.css  # Estilos específicos de tarjetas, modales, formularios y tablas
-└── js/
-    └── app.js          # Lógica de interacción (Modo oscuro, modales, drawer, atajo Escape y Chart.js)
-```
-
----
-
-## 🛠️ Cómo Ejecutar el Proyecto Localmente
+## Cómo Ejecutar el Proyecto Localmente
 
 Para probar el funcionamiento del dashboard en tu equipo, sigue estos sencillos pasos:
 
@@ -43,7 +16,7 @@ Para probar el funcionamiento del dashboard en tu equipo, sigue estos sencillos 
 
 ---
 
-## 📐 Cumplimiento de las 5 Dimensiones de IxD
+## Cumplimiento de las 5 Dimensiones de IxD
 
 1. **1D - Palabras:** Microcopia concisa y clara en avisos, formularios y rutas de navegación (*Breadcrumbs*).
 2. **2D - Representaciones Visuales:** Iconografía funcional (símbolos universales, alertas, selector de temas) y jerarquía tipográfica limpia.
